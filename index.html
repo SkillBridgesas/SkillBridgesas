@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SkillBridge</title>
+
+    <style>
+        img {
+            width: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: #cb9b34;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: rgb(255, 255, 255);
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #313131;
+        }
+
+        /* SECCIONES */
+        section {
+            height: 100vh;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        #inicio {
+            background: linear-gradient(135deg, #dbb051, #000000);
+            color: white;
+        }
+
+        #sobre {
+            color:#ffff;
+            background: linear-gradient(210deg, #010522, #ffff);
+        }
+
+        #mision {
+            background: linear-gradient(135deg, #2a655f, #000000) ;
+        }
+
+        #contacto {
+            background: linear-gradient(90deg, #34495e, #10472c);
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        /* BOTONES */
+        .boton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #000000;
+            color: white;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+
+        .boton:hover {
+            background: #313131;
+        }
+
+        /* TARJETAS */
+        .card {
+            background: gray;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 300px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre">Sobre nosotros</a>
+        <a href="#mision">Mision y Visión</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- INICIO -->
+    <section id="inicio"><img src="SkillBridge Logo.png">
+        <h1>Skillbrige</h1>
+        <p>Bienvenido a nuestra pagina web oficial 👌                       
+            Aqui esta nuestro objetivo general para tu conocimiento y tu confianza en nosotros:
+            "Impulsamos el desarrollo profesional de los colombianos, conectando talento auténtico con oportunidades reales a través de soluciones humanas, creativas y tecnológicas que transforman la forma en que las personas y las compañías se relacionan."
+        </p>
+        <button class="boton" onclick="saludo()">Saludanos</button>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="sobre">
+        <h1>Sobre nosotros</h1>
+        <p>
+            Diseñar, ofrecer y perfeccionar servicios innovadores de selección, desarrollo y proyección del talento humano, adaptados a las necesidades del mercado colombiano y orientados a potenciar el crecimiento profesional de nuevas generaciones.
+Impulsar la integración del talento joven en entornos laborales mediante proyectos colaborativos que generen impacto social, cultural y económico, fortaleciendo el rol de los colombianos como agentes de cambio en el mundo del trabajo.
+
+             
+        </p>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="mision">
+        <h1>Mision y Vision</h1>
+
+        <div class="card">
+            <h3>Mision</h3>
+            <p>"Para el 2035 queremos vernos convertidos en la plataforma de referencia que transforma la gestión del talento humano en Colombia, empoderando a una nueva generación de profesionales con propósito y autenticidad."</p>
+        </div>
+
+        <div class="card">
+            <h3>Visión</h3>
+            <p>"Impulsamos el desarrollo profesional de los colombianos, conectando talento auténtico con oportunidades reales a través de soluciones humanas, creativas y tecnológicas que transforman la forma en que las personas y las compañías se relacionan."</p>
+        </div>
+
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <h1>Contacto</h1>
+        <p>Haz clic para contactarnos</p>
+        <button class="boton" onclick="mensaje()">Enviar mensaje</button>
+    </section>
+
+    <script>
+        function saludo() {
+            alert("¡Hola! Bienvenido a nuestra página 🥺👉👈 Queremos que te sientas bien en todas las formas 😉😏");
+        }
+
+        function mensaje() {
+            alert("Llamame ¨315 5071582¨ 🤙❤️‍🔥");
+        }
+    </script>
+
+</body>
+</html>
