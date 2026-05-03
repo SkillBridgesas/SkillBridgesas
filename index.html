@@ -2,14 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillBridge</title>
 
     <style>
-        img {
-            width: 150px;
-            border-radius: 50%;
-            border: 4px solid white;
-        }
         * {
             margin: 0;
             padding: 0;
@@ -19,85 +15,119 @@
 
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
         }
 
         /* NAVBAR */
         nav {
             position: fixed;
             width: 100%;
-            background: #cb9b34;
+            background: #1a1a1a;
             padding: 15px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1000;
         }
 
         nav a {
-            color: rgb(255, 255, 255);
-            margin: 0 15px;
+            color: white;
             text-decoration: none;
             font-weight: bold;
         }
 
         nav a:hover {
-            color: #313131;
+            color: #f1c40f;
         }
 
         /* SECCIONES */
         section {
-            height: 100vh;
-            padding: 80px 20px;
+            min-height: 100vh;
+            padding: 100px 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         #inicio {
-            background: linear-gradient(135deg, #dbb051, #000000);
+            background: linear-gradient(135deg, #f1c40f, #000);
             color: white;
         }
 
         #sobre {
-            color:#ffff;
-            background: linear-gradient(210deg, #010522, #ffff);
+            background: #f4f4f4;
+            color: #333;
         }
 
         #mision {
-            background: linear-gradient(135deg, #2a655f, #000000) ;
+            background: linear-gradient(135deg, #2c3e50, #000);
+            color: white;
         }
 
         #contacto {
-            background: linear-gradient(90deg, #34495e, #10472c);
+            background: #111;
             color: white;
         }
 
         h1 {
             margin-bottom: 20px;
+            font-size: 2.5rem;
         }
 
         p {
-            max-width: 500px;
+            max-width: 600px;
             margin: auto;
+        }
+
+        img {
+            width: 140px;
+            border-radius: 50%;
+            margin-bottom: 20px;
         }
 
         /* BOTONES */
         .boton {
             margin-top: 20px;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            background: #000000;
-            color: white;
+            background: #f1c40f;
+            color: black;
             cursor: pointer;
-            border-radius: 20px;
+            border-radius: 25px;
+            font-weight: bold;
         }
 
         .boton:hover {
-            background: #313131;
+            background: #d4ac0d;
         }
 
         /* TARJETAS */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
         .card {
-            background: gray;
+            background: white;
+            color: black;
             padding: 20px;
-            margin: 20px auto;
-            max-width: 300px;
+            width: 280px;
             border-radius: 10px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
         }
 
     </style>
@@ -109,61 +139,65 @@
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#sobre">Sobre nosotros</a>
-        <a href="#mision">Mision y Visión</a>
+        <a href="#mision">Misión y Visión</a>
         <a href="#contacto">Contacto</a>
     </nav>
 
     <!-- INICIO -->
-    <section id="inicio"><img src="SkillBridge Logo.png">
-        <h1>Skillbrige</h1>
-        <p>Bienvenido a nuestra pagina web oficial 👌                       
-            Aqui esta nuestro objetivo general para tu conocimiento y tu confianza en nosotros:
-            "Impulsamos el desarrollo profesional de los colombianos, conectando talento auténtico con oportunidades reales a través de soluciones humanas, creativas y tecnológicas que transforman la forma en que las personas y las compañías se relacionan."
+    <section id="inicio">
+        <img src="SkillBridge Logo.png" alt="Logo SkillBridge">
+        <h1>SkillBridge</h1>
+        <p>
+            Impulsamos el desarrollo profesional de los colombianos, conectando talento auténtico
+            con oportunidades reales a través de soluciones humanas, creativas y tecnológicas.
         </p>
-        <button class="boton" onclick="saludo()">Saludanos</button>
+        <button class="boton" onclick="saludo()">Conócenos</button>
     </section>
 
-    <!-- SOBRE NOSOTROS -->
+    <!-- SOBRE -->
     <section id="sobre">
         <h1>Sobre nosotros</h1>
         <p>
-            Diseñar, ofrecer y perfeccionar servicios innovadores de selección, desarrollo y proyección del talento humano, adaptados a las necesidades del mercado colombiano y orientados a potenciar el crecimiento profesional de nuevas generaciones.
-Impulsar la integración del talento joven en entornos laborales mediante proyectos colaborativos que generen impacto social, cultural y económico, fortaleciendo el rol de los colombianos como agentes de cambio en el mundo del trabajo.
-
-             
+            Diseñamos y ofrecemos servicios innovadores de selección y desarrollo del talento humano,
+            adaptados al mercado colombiano. Buscamos potenciar el crecimiento profesional y generar impacto real.
         </p>
     </section>
 
-    <!-- PROYECTOS -->
+    <!-- MISION Y VISION -->
     <section id="mision">
-        <h1>Mision y Vision</h1>
+        <h1>Misión y Visión</h1>
 
-        <div class="card">
-            <h3>Mision</h3>
-            <p>"Para el 2035 queremos vernos convertidos en la plataforma de referencia que transforma la gestión del talento humano en Colombia, empoderando a una nueva generación de profesionales con propósito y autenticidad."</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Misión</h3>
+                <p>
+                    Impulsar el desarrollo profesional conectando talento con oportunidades reales
+                    mediante soluciones innovadoras.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Visión</h3>
+                <p>
+                    Para 2035, ser la plataforma líder en Colombia en la transformación del talento humano.
+                </p>
+            </div>
         </div>
-
-        <div class="card">
-            <h3>Visión</h3>
-            <p>"Impulsamos el desarrollo profesional de los colombianos, conectando talento auténtico con oportunidades reales a través de soluciones humanas, creativas y tecnológicas que transforman la forma en que las personas y las compañías se relacionan."</p>
-        </div>
-
     </section>
 
     <!-- CONTACTO -->
     <section id="contacto">
         <h1>Contacto</h1>
-        <p>Haz clic para contactarnos</p>
-        <button class="boton" onclick="mensaje()">Enviar mensaje</button>
+        <p>Puedes comunicarte con nosotros directamente:</p>
+
+        <a href="tel:3155071582">
+            <button class="boton">Llamar ahora</button>
+        </a>
     </section>
 
     <script>
         function saludo() {
-            alert("¡Hola! Bienvenido a nuestra página 🥺👉👈 Queremos que te sientas bien en todas las formas 😉😏");
-        }
-
-        function mensaje() {
-            alert("Llamame ¨315 5071582¨ 🤙❤️‍🔥");
+            alert("¡Bienvenido a SkillBridge! Estamos aquí para ayudarte 🚀");
         }
     </script>
 
