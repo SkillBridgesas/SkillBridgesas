@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SkillBridge</title>
 
 <style>
@@ -13,230 +14,245 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #0a0a0a;
+    background: #ffffff;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
     position: fixed;
     width: 100%;
-    background: #0d0d0d;
+    padding: 18px 40px;
     display: flex;
-    justify-content: center;
-    gap: 25px;
-    padding: 15px;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(12px);
     z-index: 1000;
 }
 
 nav a {
-    color: white;
+    margin-left: 20px;
     text-decoration: none;
-    font-weight: bold;
+    color: #333;
+    font-size: 14px;
 }
 
-nav a:hover {
-    color: #f1c40f;
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.boton {
+    margin-top: 30px;
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: none;
+    background: #000;
+    color: white;
+    cursor: pointer;
+}
+
+.boton.secundario {
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #333;
 }
 
 /* SECCIONES */
 section {
-    min-height: 100vh;
-    padding: 100px 20px;
+    padding: 120px 20px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
-/* HERO */
-#inicio {
-    background: linear-gradient(135deg, #f1c40f, #000);
-    color: white;
+.container {
+    max-width: 1100px;
+    margin: auto;
 }
 
-img {
-    width: 140px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-/* SOBRE */
-#sobre {
-    background: #f4f4f4;
-}
-
-/* MISION */
-#mision {
-    background: #1f1f1f;
-    color: white;
-}
-
-/* CONTRATOS */
-#contratos {
-    background: #ecf0f1;
-}
-
-/* REDES */
-#redes {
-    background: #111;
-    color: white;
-}
-
-/* CONTACTO */
-#contacto {
-    background: #000;
-    color: white;
-}
-
-/* TITULOS */
-h1 {
-    margin-bottom: 20px;
-}
-
-/* TARJETAS */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
 }
 
 .card {
-    background: white;
-    padding: 20px;
-    width: 260px;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 14px;
+    background: #f8f9fb;
+    transition: 0.3s;
 }
 
-/* BOTONES */
-.boton {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    background: #f1c40f;
-    cursor: pointer;
-    border-radius: 20px;
-    font-weight: bold;
+.card:hover {
+    transform: translateY(-10px);
 }
 
-.boton:hover {
-    background: #d4ac0d;
+/* OSCURO */
+.dark {
+    background: #0a0a0a;
+    color: white;
+}
+
+.dark .card {
+    background: #161616;
 }
 
 /* LINKS */
 .link {
     display: block;
-    margin: 10px;
-    color: #3498db;
+    margin: 12px;
+    color: #0066ff;
     text-decoration: none;
-}
-
-.link:hover {
-    text-decoration: underline;
+    font-size: 18px;
 }
 
 /* FOOTER */
 footer {
+    padding: 40px;
     background: #000;
     color: white;
     text-align: center;
-    padding: 20px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-    nav {
-        flex-wrap: wrap;
-    }
+/* ANIMACIONES */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
-<a href="#inicio">Inicio</a>
-<a href="#sobre">Sobre</a>
-<a href="#mision">Misión</a>
+<div><strong>SkillBridge</strong></div>
+<div>
+<a href="#valor">Valor</a>
+<a href="#features">Servicios</a>
 <a href="#contratos">Contratos</a>
 <a href="#redes">Redes</a>
-<a href="#contacto">Contacto</a>
+</div>
 </nav>
 
-<!-- INICIO -->
-<section id="inicio">
-<img src="SkillBridge Logo.png" alt="Logo">
-<h1>SkillBridge</h1>
-<p>Conectamos talento con oportunidades reales 🚀</p>
-<button class="boton" onclick="saludo()">Conócenos</button>
+<!-- HERO -->
+<div class="hero">
+<div>
+<h1>El futuro del talento empieza aquí</h1>
+<p>Conectamos profesionales con oportunidades reales usando tecnología y propósito.</p>
+
+<button class="boton">Comenzar</button>
+<button class="boton secundario">Saber más</button>
+</div>
+</div>
+
+<!-- VALOR -->
+<section id="valor" class="fade">
+<div class="container">
+<h1>Una nueva forma de conectar talento</h1>
+<p>SkillBridge redefine cómo las personas encuentran oportunidades laborales en Colombia.</p>
+</div>
 </section>
 
-<!-- SOBRE -->
-<section id="sobre">
-<h1>Sobre nosotros</h1>
-<p>
-Somos una iniciativa enfocada en impulsar el talento colombiano mediante soluciones innovadoras
-de desarrollo profesional.
-</p>
-</section>
+<!-- FEATURES -->
+<section id="features" class="fade">
+<div class="container">
+<h1>Servicios</h1>
 
-<!-- MISION -->
-<section id="mision">
-<h1>Misión y Visión</h1>
-<div class="cards">
+<div class="grid">
 <div class="card">
-<h3>Misión</h3>
-<p>Conectar talento con oportunidades reales.</p>
+<h3>Matching inteligente</h3>
+<p>Conectamos perfiles con oportunidades precisas.</p>
 </div>
 
 <div class="card">
-<h3>Visión</h3>
-<p>Ser líderes en Colombia para 2035.</p>
+<h3>Desarrollo profesional</h3>
+<p>Capacitamos talento para el mercado real.</p>
 </div>
+
+<div class="card">
+<h3>Optimización empresarial</h3>
+<p>Mejoramos procesos de talento humano.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- DARK SECTION -->
+<section class="dark fade">
+<div class="container">
+<h1>Diseñado para escalar</h1>
+<p>Tecnología, personas y propósito en un solo lugar.</p>
 </div>
 </section>
 
 <!-- CONTRATOS -->
-<section id="contratos">
-<h1>Contratos</h1>
-<p>Descarga nuestros documentos:</p>
+<section id="contratos" class="fade">
+<div class="container">
+<h1>Documentación</h1>
 
 <a class="link" href="contrato1.pdf" target="_blank">Contrato laboral</a>
-<a class="link" href="contrato2.pdf" target="_blank">Contrato prestación de servicios</a>
-<a class="link" href="contrato3.pdf" target="_blank">Acuerdo de confidencialidad</a>
+<a class="link" href="contrato2.pdf" target="_blank">Prestación de servicios</a>
+<a class="link" href="contrato3.pdf" target="_blank">Confidencialidad</a>
 <a class="link" href="contrato4.pdf" target="_blank">Política de datos</a>
 
+</div>
 </section>
 
 <!-- REDES -->
-<section id="redes">
-<h1>Redes Sociales</h1>
+<section id="redes" class="dark fade">
+<div class="container">
+<h1>Conecta con nosotros</h1>
 
-<a class="link" href="https://www.instagram.com/skillbridgesas/" target="_blank">Instagram</a>
-<a class="link" href="https://facebook.com" target="_blank">Facebook</a>
-<a class="link" href="www.linkedin.com/in/skill-bridge-b587b3407" target="_blank">LinkedIn</a>
+<a class="link" href="#">Instagram</a>
+<a class="link" href="#">LinkedIn</a>
+<a class="link" href="#">Facebook</a>
 
-</section>
-
-<!-- CONTACTO -->
-<section id="contacto">
-<h1>Contacto</h1>
-<a href="tel:3155071582">
-<button class="boton">Llamar</button>
-</a>
+</div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-<p>© 2026 SkillBridge - Todos los derechos reservados</p>
+<p>© 2026 SkillBridge. All rights reserved.</p>
 </footer>
 
 <script>
-function saludo() {
-    alert("Bienvenido a SkillBridge 🚀");
-}
+const elements = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+});
+
+elements.forEach(el => observer.observe(el));
 </script>
 
 </body>
