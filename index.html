@@ -119,6 +119,13 @@ section {
     opacity: 1;
     transform: translateY(0);
 }
+#pdfFrame {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+#submenuContratos { transition: 0.3s;
+}
 </style>
 </head>
 
@@ -183,28 +190,31 @@ section {
 
 <h1>Documentación</h1>
 
-<!-- BOTÓN PRINCIPAL -->
 <button class="boton" onclick="toggleContratos()">Contrato laboral ▼</button>
 
-<!-- SUBMENÚ OCULTO -->
 <div id="submenuContratos" style="display: none; margin-top: 20px;">
 
-<a class="link" href="contrato_fijo.pdf" target="_blank">
+<a class="link" onclick="abrirPDF('contrato_fijo.pdf')">
 Contrato a término fijo
 </a>
 
-<a class="link" href="contrato_indefinido.pdf" target="_blank">
-Contrato a término indefinido
+<a class="link" onclick="abrirPDF('contrato_indefinido.pdf')">
+Contrato indefinido
 </a>
 
-<a class="link" href="contrato_obra.pdf" target="_blank">
-Contrato por obra o labor
+<a class="link" onclick="abrirPDF('contrato_obra.pdf')">
+Contrato por obra
 </a>
 
-<a class="link" href="contrato_servicios.pdf" target="_blank">
-Contrato por prestación de servicios
+<a class="link" onclick="abrirPDF('contrato_servicios.pdf')">
+Prestación de servicios
 </a>
 
+</div>
+
+<!-- VISOR PDF -->
+<div id="visorPDF" style="margin-top: 30px; display: none;">
+    <iframe id="pdfFrame" width="100%" height="600px"></iframe>
 </div>
 
 </div>
@@ -240,6 +250,19 @@ window.addEventListener("scroll", () => {
     });
 });
 </script>
+<script>
+function toggleContratos() {
+    const menu = document.getElementById("submenuContratos");
+    menu.style.display = (menu.style.display === "none") ? "block" : "none";
+}
 
+function abrirPDF(ruta) {
+    const visor = document.getElementById("visorPDF");
+    const frame = document.getElementById("pdfFrame");
+
+    frame.src = ruta;
+    visor.style.display = "block";
+}
+</script>
 </body>
 </html>
