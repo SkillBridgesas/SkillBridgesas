@@ -253,28 +253,7 @@ Síguenos en Facebook →
 
 <script>
 /* ANIMACIÓN SCROLL */
-<script>
-
-const inputPDF = document.getElementById("inputPDF");
-const visorPDF = document.getElementById("visorPDF");
-
-inputPDF.addEventListener("change", function() {
-
-    const archivo = this.files[0];
-
-    if (archivo) {
-
-        const url = URL.createObjectURL(archivo);
-
-        visorPDF.src = url;
-
-        visorPDF.style.display = "block";
-    }
-
-});
-
-</script>
-    const faders = document.querySelectorAll(".fade");
+const faders = document.querySelectorAll(".fade");
 
 window.addEventListener("scroll", () => {
     faders.forEach(el => {
@@ -301,3 +280,24 @@ function abrirPDF(ruta) {
 </script>
 </body>
 </html>
+<script>
+
+const inputPDF = document.getElementById("inputPDF");
+const visorPDF = document.getElementById("visorPDF");
+
+inputPDF.addEventListener("change", function() {
+
+    const archivo = this.files[0];
+
+    if (archivo) {
+
+        const url = URL.createObjectURL(archivo);
+
+        visorPDF.src = url;
+
+        visorPDF.style.display = "block";
+    }
+
+});
+
+</script>
