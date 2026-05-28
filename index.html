@@ -189,7 +189,21 @@ section {
 <div class="container">
 
 <h1>Documentación</h1>
+<section id="subirPDF">
 
+<h1>Subir PDF</h1>
+
+<input type="file" id="inputPDF" accept="application/pdf">
+
+<br><br>
+
+<iframe id="visorPDF"
+width="100%"
+height="600px"
+style="display:none; border:none; border-radius:10px;">
+</iframe>
+
+</section>
 <button class="boton" onclick="toggleContratos()">Contrato laboral ▼</button>
 
 <div id="submenuContratos" style="display: none; margin-top: 20px;">
@@ -239,7 +253,28 @@ Síguenos en Facebook →
 
 <script>
 /* ANIMACIÓN SCROLL */
-const faders = document.querySelectorAll(".fade");
+<script>
+
+const inputPDF = document.getElementById("inputPDF");
+const visorPDF = document.getElementById("visorPDF");
+
+inputPDF.addEventListener("change", function() {
+
+    const archivo = this.files[0];
+
+    if (archivo) {
+
+        const url = URL.createObjectURL(archivo);
+
+        visorPDF.src = url;
+
+        visorPDF.style.display = "block";
+    }
+
+});
+
+</script>
+    const faders = document.querySelectorAll(".fade");
 
 window.addEventListener("scroll", () => {
     faders.forEach(el => {
