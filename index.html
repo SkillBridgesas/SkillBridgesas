@@ -3,301 +3,663 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SkillBridge</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --gold:        #C9A84C;
+    --gold-light:  #E8C96A;
+    --gold-dark:   #9A7B2E;
+    --gold-faint:  rgba(201,168,76,0.08);
+    --black:       #090909;
+    --black-2:     #111111;
+    --black-3:     #181818;
+    --black-4:     #212121;
+    --text:        #F2E8D0;
+    --muted:       #8A7A5A;
+    --grad-gold:   linear-gradient(90deg,#9A7B2E,#E8C96A,#9A7B2E);
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: #111;
-    background: #fff;
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+    font-family:'Raleway',sans-serif;
+    color:var(--text);
+    background:var(--black);
 }
 
-/* NAV */
-nav {
-    position: fixed;
-    width: 100%;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(10px);
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--black-2)}
+::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
+
+/* ─── NAV ─────────────────────────────────────────────── */
+nav{
+    position:fixed;top:0;width:100%;
+    padding:16px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(9,9,9,0.88);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(201,168,76,0.18);
+    z-index:1000;
 }
 
-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #111;
-    font-size: 14px;
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:1.35rem;font-weight:700;
+    color:var(--gold);letter-spacing:2px;
+}
+.logo span{color:var(--text)}
+
+.nav-links{display:flex;gap:28px;align-items:center}
+
+nav a{
+    text-decoration:none;
+    color:var(--muted);
+    font-size:12px;font-weight:500;
+    letter-spacing:1.8px;text-transform:uppercase;
+    transition:color .3s;position:relative;
+}
+nav a::after{
+    content:'';position:absolute;bottom:-5px;left:0;
+    width:0;height:1px;background:var(--gold);transition:width .35s;
+}
+nav a:hover{color:var(--gold)}
+nav a:hover::after{width:100%}
+
+/* ─── SECCIONES BASE ──────────────────────────────────── */
+section{
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:110px 40px 70px;
+    position:relative;overflow:hidden;
 }
 
-/* SECCIONES */
-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px;
+/* ─── HERO ────────────────────────────────────────────── */
+.hero{background:var(--black)}
+
+.hero::before{
+    content:'';position:absolute;inset:0;
+    background:
+        radial-gradient(ellipse 70% 60% at 65% 35%, rgba(201,168,76,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    pointer-events:none;
 }
 
-/* HERO */
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 600;
+.hero-inner{position:relative;z-index:1}
+
+.hero-tag{
+    display:inline-block;
+    border:1px solid var(--gold-dark);
+    color:var(--gold);font-size:10px;font-weight:600;
+    letter-spacing:4px;text-transform:uppercase;
+    padding:6px 20px;border-radius:20px;margin-bottom:28px;
 }
 
-.hero p {
-    margin-top: 15px;
-    font-size: 1.2rem;
-    color: #555;
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.5rem,5.5vw,4.4rem);font-weight:700;
+    line-height:1.12;color:var(--text);
+    max-width:820px;margin:0 auto;
+}
+.hero h1 em{font-style:italic;color:var(--gold)}
+
+.hero-divider{
+    width:56px;height:2px;
+    background:var(--grad-gold);
+    margin:26px auto;
 }
 
-/* BOTÓN */
-.boton {
-    margin-top: 25px;
-    padding: 12px 28px;
-    border-radius: 25px;
-    border: none;
-    background: #000;
-    color: white;
-    cursor: pointer;
+.hero p{
+    color:var(--muted);font-size:1.05rem;
+    font-weight:300;letter-spacing:.5px;
 }
 
-.boton:hover {
-    opacity: 0.8;
+/* ─── BOTÓN ───────────────────────────────────────────── */
+.boton{
+    display:inline-block;
+    padding:12px 34px;border-radius:2px;
+    border:1px solid var(--gold);background:transparent;
+    color:var(--gold);
+    font-family:'Raleway',sans-serif;font-size:12px;
+    font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+    cursor:pointer;transition:all .3s;
+    position:relative;overflow:hidden;margin-top:30px;
+}
+.boton::before{
+    content:'';position:absolute;inset:0;
+    background:var(--gold);transform:scaleX(0);
+    transform-origin:left;transition:transform .3s;z-index:0;
+}
+.boton span{position:relative;z-index:1}
+.boton:hover::before{transform:scaleX(1)}
+.boton:hover{color:var(--black)}
+
+/* ─── ETIQUETA / TÍTULO SECCIÓN ───────────────────────── */
+.s-label{
+    font-size:10px;font-weight:600;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);margin-bottom:10px;
+}
+.s-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2rem,4vw,3rem);font-weight:700;
+    color:var(--text);margin-bottom:8px;
+}
+.s-sub{
+    color:var(--muted);font-size:.95rem;
+    font-weight:300;margin-bottom:48px;
 }
 
-/* SECCIÓN OSCURA */
-.dark {
-    background: #000;
-    color: white;
+/* ─── SERVICIOS ───────────────────────────────────────── */
+#servicios{background:var(--black-2)}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:1px;max-width:880px;
+    margin-top:8px;
+    background:rgba(201,168,76,0.1);
 }
 
-.dark p {
-    color: #ccc;
+.card{
+    padding:38px 30px;
+    background:var(--black-3);
+    text-align:left;position:relative;
+    transition:background .3s,border-color .3s;
+    border:1px solid transparent;
+}
+.card::before{
+    content:attr(data-n);
+    position:absolute;top:18px;right:22px;
+    font-family:'Playfair Display',serif;
+    font-size:2.8rem;font-weight:700;
+    color:rgba(201,168,76,0.05);line-height:1;
+}
+.card:hover{background:var(--black-4);border-color:rgba(201,168,76,0.22)}
+
+.card-icon{
+    width:38px;height:38px;
+    border:1px solid var(--gold-dark);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;color:var(--gold);font-size:16px;
+}
+.card h3{
+    font-family:'Playfair Display',serif;
+    font-size:1.15rem;color:var(--text);margin-bottom:10px;
+}
+.card p{color:var(--muted);font-size:.88rem;line-height:1.75;font-weight:300}
+
+/* ─── QUOTE ───────────────────────────────────────────── */
+.quote-sec{
+    background:var(--black-3);
+}
+.quote-sec::before{
+    content:'';position:absolute;inset:0;
+    background:
+        linear-gradient(135deg,rgba(201,168,76,0.05) 0%,transparent 50%),
+        radial-gradient(ellipse at 80% 20%,rgba(201,168,76,0.06) 0%,transparent 55%);
+    pointer-events:none;
+}
+.q-mark{
+    font-family:'Playfair Display',serif;
+    font-size:5.5rem;color:var(--gold);
+    opacity:.15;line-height:.55;
+    display:block;margin-bottom:18px;
+}
+.q-text{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.35rem,3vw,2.1rem);font-style:italic;
+    color:var(--text);max-width:680px;
+    line-height:1.55;margin:0 auto;
+    position:relative;z-index:1;
+}
+.q-author{
+    margin-top:22px;color:var(--gold);
+    font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    position:relative;z-index:1;
 }
 
-/* TARJETAS */
-.grid {
-    display: grid;
-    gap: 20px;
-    margin-top: 40px;
+/* ─── CONTRATOS ───────────────────────────────────────── */
+#contratos{
+    background:var(--black-2);
+    align-items:flex-start;
+    padding-top:130px;
+}
+.contratos-inner{width:100%;max-width:780px;text-align:left}
+
+.acc-btn{
+    width:100%;padding:17px 22px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:var(--black-3);
+    border:1px solid rgba(201,168,76,0.18);
+    color:var(--text);
+    font-family:'Raleway',sans-serif;font-size:13px;
+    font-weight:600;letter-spacing:1px;
+    cursor:pointer;transition:all .3s;margin-bottom:1px;
+}
+.acc-btn:hover{background:var(--black-4);border-color:var(--gold);color:var(--gold)}
+.acc-btn .arr{color:var(--gold);transition:transform .3s;font-size:17px}
+.acc-btn.open .arr{transform:rotate(180deg)}
+
+.acc-body{
+    display:none;
+    background:var(--black-4);
+    border:1px solid rgba(201,168,76,0.1);
+    border-top:none;padding:8px 0;margin-bottom:8px;
 }
 
-.card {
-    padding: 30px;
+.pdf-link{
+    display:flex;align-items:center;gap:12px;
+    padding:13px 22px;
+    color:var(--muted);text-decoration:none;font-size:13px;
+    transition:all .25s;cursor:pointer;
+    border-left:2px solid transparent;
+}
+.pdf-link:hover{
+    color:var(--gold);
+    background:rgba(201,168,76,0.04);
+    border-left-color:var(--gold);
+    padding-left:30px;
+}
+.doc-icon{
+    width:28px;height:28px;
+    background:rgba(201,168,76,0.08);
+    border:1px solid rgba(201,168,76,0.2);
+    border-radius:4px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0;
 }
 
-/* CONTRATOS */
-.link {
-    display: block;
-    margin: 10px;
-    font-size: 18px;
-    color: #0071e3;
-    text-decoration: none;
+/* visor contratos */
+#visorContratos{
+    margin-top:22px;display:none;
+    border:1px solid rgba(201,168,76,0.2);
+    border-radius:4px;overflow:hidden;
+}
+#visorContratos iframe{width:100%;height:540px;border:none;display:block}
+
+/* ─── SUBIR PDF ───────────────────────────────────────── */
+#subir{
+    background:var(--black-3);
+    align-items:flex-start;
+    padding-top:130px;
+}
+.upload-inner{width:100%;max-width:800px;text-align:left}
+
+/* zona drop */
+.drop-zone{
+    border:2px dashed rgba(201,168,76,0.28);
+    border-radius:6px;padding:62px 40px;
+    text-align:center;cursor:pointer;
+    transition:all .35s;position:relative;
+    background:rgba(201,168,76,0.02);
+    margin-top:34px;
+}
+.drop-zone:hover,.drop-zone.drag-over{
+    border-color:var(--gold);
+    background:rgba(201,168,76,0.05);
+}
+.drop-zone input[type="file"]{
+    position:absolute;inset:0;opacity:0;
+    cursor:pointer;width:100%;height:100%;
+}
+.drop-icon{
+    font-size:2.6rem;color:var(--gold);
+    opacity:.45;margin-bottom:14px;
+}
+.drop-title{
+    font-family:'Playfair Display',serif;
+    font-size:1.25rem;color:var(--text);margin-bottom:7px;
+}
+.drop-sub{color:var(--muted);font-size:.83rem}
+.drop-cta{
+    display:inline-block;margin-top:18px;
+    padding:9px 26px;border:1px solid var(--gold-dark);
+    border-radius:2px;color:var(--gold);
+    font-size:11px;font-weight:600;letter-spacing:2px;
+    text-transform:uppercase;transition:all .3s;
+}
+.drop-zone:hover .drop-cta{background:var(--gold);color:var(--black)}
+
+/* archivo cargado */
+.file-bar{
+    display:none;align-items:center;gap:12px;
+    padding:13px 20px;margin-top:14px;
+    background:var(--black-4);
+    border:1px solid rgba(201,168,76,0.2);border-radius:4px;
+}
+.file-bar.show{display:flex}
+.file-ico{color:var(--gold);font-size:1.35rem}
+.file-name{color:var(--text);font-size:13px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-sz{color:var(--muted);font-size:11px;flex-shrink:0}
+.rm-btn{
+    background:none;border:none;
+    color:var(--muted);cursor:pointer;
+    font-size:17px;transition:color .2s;padding:0 4px;line-height:1;
+}
+.rm-btn:hover{color:#e55}
+
+/* visor subir */
+#visorSubir{
+    margin-top:18px;display:none;
+    border:1px solid rgba(201,168,76,0.2);
+    border-radius:4px;overflow:hidden;
+}
+#pdfSubirFrame{width:100%;height:600px;border:none;display:block}
+
+/* cabecera visor compartida */
+.visor-hd{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:11px 18px;
+    background:var(--black-3);
+    border-bottom:1px solid rgba(201,168,76,0.14);
+}
+.visor-title{font-size:12px;color:var(--gold);font-weight:500;letter-spacing:.5px}
+.visor-close{
+    background:none;border:none;
+    color:var(--muted);cursor:pointer;
+    font-size:16px;transition:color .2s;padding:0 4px;
+}
+.visor-close:hover{color:var(--gold)}
+
+/* ─── REDES ───────────────────────────────────────────── */
+#redes{background:var(--black)}
+#redes::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 50% at 50% 60%, rgba(201,168,76,0.05) 0%,transparent 65%);
+    pointer-events:none;
+}
+.social-grid{
+    display:flex;flex-direction:column;gap:2px;
+    margin-top:38px;max-width:480px;
+    margin-left:auto;margin-right:auto;
+}
+.social-link{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:17px 22px;
+    background:var(--black-2);
+    border:1px solid rgba(201,168,76,0.1);
+    color:var(--muted);text-decoration:none;
+    font-size:13px;font-weight:500;letter-spacing:.5px;
+    transition:all .3s;
+}
+.social-link:hover{
+    background:var(--black-3);color:var(--gold);
+    border-color:rgba(201,168,76,0.4);padding-left:32px;
+}
+.soc-arr{color:var(--gold);opacity:.5;transition:transform .3s,opacity .3s}
+.social-link:hover .soc-arr{transform:translateX(6px);opacity:1}
+
+/* ─── FOOTER ──────────────────────────────────────────── */
+footer{
+    background:var(--black-2);
+    border-top:1px solid rgba(201,168,76,0.14);
+    padding:18px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+}
+.ft-logo{
+    font-family:'Playfair Display',serif;
+    color:var(--gold);font-size:.95rem;letter-spacing:2px;
+}
+.ft-copy{color:var(--muted);font-size:11px;letter-spacing:.5px}
+
+/* ─── LÍNEA ORO decorativa ────────────────────────────── */
+.gold-line{
+    width:50px;height:1px;
+    background:var(--grad-gold);
+    margin:0 auto 20px;
 }
 
-.link:hover {
-    text-decoration: underline;
+/* ─── ANIMACIÓN FADE ──────────────────────────────────── */
+.fade{
+    opacity:0;transform:translateY(28px);
+    transition:opacity .9s ease,transform .9s ease;
 }
+.fade.visible{opacity:1;transform:translateY(0)}
 
-/* ANIMACIÓN */
-.fade {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 0.8s;
-}
-
-.fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-#pdfFrame {
-    border-radius: 10px;
-    border: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-#submenuContratos { transition: 0.3s;
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:768px){
+    nav{padding:14px 20px}
+    .nav-links{gap:14px}
+    nav a{font-size:10px;letter-spacing:1px}
+    section{padding:90px 20px 50px}
+    #contratos,#subir{padding-top:100px}
+    .grid{grid-template-columns:1fr}
+    footer{flex-direction:column;gap:8px;text-align:center}
+    .drop-zone{padding:40px 20px}
 }
 </style>
 </head>
-
 <body>
 
-<!-- NAV -->
+<!-- ─ NAV ──────────────────────────────────────────────── -->
 <nav>
-<div>SkillBridge</div>
-<div>
-<a href="#inicio">Inicio</a>
-<a href="#servicios">Servicios</a>
-<a href="#contratos">Contratos</a>
-<a href="#redes">Redes</a>
-</div>
+    <div class="logo">Skill<span>Bridge</span></div>
+    <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contratos">Contratos</a>
+        <a href="#subir">Subir PDF</a>
+        <a href="#redes">Redes</a>
+    </div>
 </nav>
 
-<!-- HERO -->
+<!-- ─ HERO ──────────────────────────────────────────────── -->
 <section id="inicio" class="hero fade">
-<div>
-<h1>Conectamos talento con oportunidades</h1>
-<p>Una nueva forma de crecer profesionalmente en Colombia.</p>
-<button class="boton">Explorar</button>
-</div>
+    <div class="hero-inner">
+        <div class="hero-tag">Colombia · Talento · Futuro</div>
+        <h1>Conectamos <em>talento</em><br>con oportunidades</h1>
+        <div class="hero-divider"></div>
+        <p>Una nueva forma de crecer profesionalmente en Colombia.</p>
+        <button class="boton" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">
+            <span>Explorar</span>
+        </button>
+    </div>
 </section>
 
-<!-- SERVICIOS -->
+<!-- ─ SERVICIOS ─────────────────────────────────────────── -->
 <section id="servicios" class="fade">
-<div>
-<h1>Lo que hacemos</h1>
-
-<div class="grid">
-<div class="card">
-<h3>Reclutamiento inteligente</h3>
-<p>Seleccionamos talento con precisión.</p>
-</div>
-
-<div class="card">
-<h3>Formación profesional</h3>
-<p>Preparamos a las nuevas generaciones.</p>
-</div>
-
-<div class="card">
-<h3>Conexión real</h3>
-<p>Unimos personas con oportunidades.</p>
-</div>
-</div>
-
-</div>
+    <div>
+        <p class="s-label">Nuestro enfoque</p>
+        <h2 class="s-title">Lo que hacemos</h2>
+        <p class="s-sub">Tres pilares que transforman carreras y organizaciones.</p>
+        <div class="grid">
+            <div class="card" data-n="01">
+                <div class="card-icon">◈</div>
+                <h3>Reclutamiento inteligente</h3>
+                <p>Seleccionamos talento con precisión y criterio estratégico para cada organización.</p>
+            </div>
+            <div class="card" data-n="02">
+                <div class="card-icon">◉</div>
+                <h3>Formación profesional</h3>
+                <p>Preparamos a las nuevas generaciones con herramientas reales del mercado laboral.</p>
+            </div>
+            <div class="card" data-n="03">
+                <div class="card-icon">◇</div>
+                <h3>Conexión real</h3>
+                <p>Unimos personas con oportunidades en un entorno que prioriza el crecimiento humano.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- SECCIÓN OSCURA -->
-<section class="dark fade">
-<div>
-<h1>Diseñado para el futuro del trabajo</h1>
-<p>Simple, humano y tecnológico.</p>
-</div>
+<!-- ─ QUOTE ──────────────────────────────────────────────── -->
+<section class="quote-sec fade">
+    <div style="position:relative;z-index:1;">
+        <span class="q-mark">"</span>
+        <p class="q-text">Diseñado para el futuro del trabajo.<br>Simple, humano y tecnológico.</p>
+        <div class="gold-line" style="margin-top:28px"></div>
+        <p class="q-author">— SkillBridge · Colombia</p>
+    </div>
 </section>
 
-<!-- CONTRATOS -->
+<!-- ─ CONTRATOS ──────────────────────────────────────────── -->
 <section id="contratos" class="fade">
-<div class="container">
+    <div class="contratos-inner">
+        <p class="s-label">Gestión documental</p>
+        <h2 class="s-title">Documentación</h2>
+        <p class="s-sub" style="margin-bottom:28px">Accede a los modelos de contrato disponibles.</p>
 
-<h1>Documentación</h1>
-<section id="subirPDF">
+        <button class="acc-btn" id="btnContratos" onclick="toggleContratos()">
+            <span>Contrato laboral</span>
+            <span class="arr">▾</span>
+        </button>
 
-<h1>Subir PDF</h1>
+        <div id="submenuContratos" class="acc-body">
+            <a class="pdf-link" onclick="abrirContratosPDF('contrato_fijo.pdf','Contrato a término fijo')">
+                <span class="doc-icon">PDF</span> Contrato a término fijo
+            </a>
+            <a class="pdf-link" onclick="abrirContratosPDF('contrato_indefinido.pdf','Contrato indefinido')">
+                <span class="doc-icon">PDF</span> Contrato indefinido
+            </a>
+            <a class="pdf-link" onclick="abrirContratosPDF('contrato_obra.pdf','Contrato por obra')">
+                <span class="doc-icon">PDF</span> Contrato por obra
+            </a>
+            <a class="pdf-link" onclick="abrirContratosPDF('contrato_servicios.pdf','Prestación de servicios')">
+                <span class="doc-icon">PDF</span> Prestación de servicios
+            </a>
+        </div>
 
-<input type="file" id="inputPDF" accept="application/pdf">
-
-<br><br>
-
-<iframe id="visorPDF"
-width="100%"
-height="600px"
-style="display:none; border:none; border-radius:10px;">
-</iframe>
-
+        <div id="visorContratos">
+            <div class="visor-hd">
+                <span class="visor-title" id="visorContratosTitulo">Documento</span>
+                <button class="visor-close" onclick="cerrarVisorContratos()">✕</button>
+            </div>
+            <iframe id="pdfContratoFrame"></iframe>
+        </div>
+    </div>
 </section>
-<button class="boton" onclick="toggleContratos()">Contrato laboral ▼</button>
 
-<div id="submenuContratos" style="display: none; margin-top: 20px;">
+<!-- ─ SUBIR PDF ───────────────────────────────────────────── -->
+<section id="subir" class="fade">
+    <div class="upload-inner">
+        <p class="s-label">Gestión de archivos</p>
+        <h2 class="s-title">Subir PDF</h2>
+        <p class="s-sub" style="margin-bottom:0">Sube y visualiza cualquier documento PDF directamente en la plataforma.</p>
 
-<a class="link" onclick="abrirPDF('contrato_fijo.pdf')">
-Contrato a término fijo
-</a>
+        <!-- zona drag & drop -->
+        <div class="drop-zone" id="dropZone">
+            <input type="file" id="inputPDF" accept="application/pdf">
+            <div class="drop-icon">⬆</div>
+            <p class="drop-title">Arrastra tu PDF aquí</p>
+            <p class="drop-sub">o haz clic para seleccionar un archivo desde tu dispositivo</p>
+            <span class="drop-cta">Seleccionar archivo</span>
+        </div>
 
-<a class="link" onclick="abrirPDF('contrato_indefinido.pdf')">
-Contrato indefinido
-</a>
+        <!-- barra info archivo -->
+        <div class="file-bar" id="fileBar">
+            <span class="file-ico">📄</span>
+            <span class="file-name" id="fileName">archivo.pdf</span>
+            <span class="file-sz" id="fileSize">0 KB</span>
+            <button class="rm-btn" onclick="removerArchivo()">✕</button>
+        </div>
 
-<a class="link" onclick="abrirPDF('contrato_obra.pdf')">
-Contrato por obra
-</a>
-
-<a class="link" onclick="abrirPDF('contrato_servicios.pdf')">
-Prestación de servicios
-</a>
-
-</div>
-
-<!-- VISOR PDF -->
-<div id="visorPDF" style="margin-top: 30px; display: none;">
-    <iframe id="pdfFrame" width="100%" height="600px"></iframe>
-</div>
-
-</div>
+        <!-- visor -->
+        <div id="visorSubir">
+            <div class="visor-hd">
+                <span class="visor-title" id="visorSubirTitulo">Vista previa</span>
+                <button class="visor-close" onclick="cerrarVisorSubir()">✕</button>
+            </div>
+            <iframe id="pdfSubirFrame"></iframe>
+        </div>
+    </div>
 </section>
-<!-- REDES -->
-<section id="redes" class="dark fade">
-<div>
-<h1>Conecta con nosotros</h1>
 
-<a class="link" href="https://www.instagram.com/skillbridgesas/?hl=en" target="_blank">
-Síguenos en Instagram →
-</a>
-<a class="link" href="www.linkedin.com/in/skill-bridge-b587b3407" target="_blank">
-Síguenos en Linkedln →
-</a>
-<a class="link" href="https://www.instagram.com/tu_usuario" target="_blank">
-Síguenos en Facebook →
-</a>
-
-</div>
+<!-- ─ REDES ──────────────────────────────────────────────── -->
+<section id="redes" class="fade">
+    <div style="position:relative;z-index:1;width:100%">
+        <p class="s-label">Síguenos</p>
+        <h2 class="s-title">Conecta con nosotros</h2>
+        <p class="s-sub">Mantente al día con nuestras últimas novedades.</p>
+        <div class="social-grid">
+            <a class="social-link" href="https://www.instagram.com/skillbridgesas/?hl=en" target="_blank">
+                Instagram <span class="soc-arr">→</span>
+            </a>
+            <a class="social-link" href="https://www.linkedin.com/in/skill-bridge-b587b3407" target="_blank">
+                LinkedIn <span class="soc-arr">→</span>
+            </a>
+            <a class="social-link" href="https://www.instagram.com/tu_usuario" target="_blank">
+                Facebook <span class="soc-arr">→</span>
+            </a>
+        </div>
+    </div>
 </section>
+
+<!-- ─ FOOTER ─────────────────────────────────────────────── -->
+<footer>
+    <div class="ft-logo">SkillBridge</div>
+    <div class="ft-copy">© 2025 SkillBridge · Todos los derechos reservados</div>
+</footer>
 
 <script>
-/* ANIMACIÓN SCROLL */
-const faders = document.querySelectorAll(".fade");
+/* ── ANIMACIÓN SCROLL ─────────────────────── */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+},{threshold:0.1});
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
-window.addEventListener("scroll", () => {
-    faders.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            el.classList.add("visible");
-        }
-    });
-});
-</script>
-<script>
-function toggleContratos() {
-    const menu = document.getElementById("submenuContratos");
-    menu.style.display = (menu.style.display === "none") ? "block" : "none";
+/* ── CONTRATOS ACCORDION ──────────────────── */
+function toggleContratos(){
+    const menu = document.getElementById('submenuContratos');
+    const btn  = document.getElementById('btnContratos');
+    const open = menu.style.display === 'block';
+    menu.style.display = open ? 'none' : 'block';
+    btn.classList.toggle('open', !open);
 }
 
-function abrirPDF(ruta) {
-    const visor = document.getElementById("visorPDF");
-    const frame = document.getElementById("pdfFrame");
+function abrirContratosPDF(ruta, titulo){
+    const v = document.getElementById('visorContratos');
+    document.getElementById('pdfContratoFrame').src = ruta;
+    document.getElementById('visorContratosTitulo').textContent = titulo;
+    v.style.display = 'block';
+    setTimeout(()=> v.scrollIntoView({behavior:'smooth',block:'nearest'}), 60);
+}
 
-    frame.src = ruta;
-    visor.style.display = "block";
+function cerrarVisorContratos(){
+    document.getElementById('visorContratos').style.display = 'none';
+    document.getElementById('pdfContratoFrame').src = '';
+}
+
+/* ── SUBIR PDF ────────────────────────────── */
+const dropZone = document.getElementById('dropZone');
+const inputPDF = document.getElementById('inputPDF');
+let blobURL = null;
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over') });
+dropZone.addEventListener('dragleave', ()=> dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+    e.preventDefault(); dropZone.classList.remove('drag-over');
+    const f = e.dataTransfer.files[0];
+    if(f && f.type === 'application/pdf') cargarPDF(f);
+});
+inputPDF.addEventListener('change', function(){ if(this.files[0]) cargarPDF(this.files[0]) });
+
+function cargarPDF(file){
+    if(blobURL) URL.revokeObjectURL(blobURL);
+    blobURL = URL.createObjectURL(file);
+
+    document.getElementById('pdfSubirFrame').src  = blobURL;
+    document.getElementById('visorSubirTitulo').textContent = file.name;
+    document.getElementById('fileName').textContent = file.name;
+    document.getElementById('fileSize').textContent = (file.size/1024).toFixed(0) + ' KB';
+    document.getElementById('fileBar').classList.add('show');
+    document.getElementById('visorSubir').style.display = 'block';
+
+    setTimeout(()=> document.getElementById('visorSubir').scrollIntoView({behavior:'smooth',block:'nearest'}), 60);
+}
+
+function removerArchivo(){
+    cerrarVisorSubir();
+    document.getElementById('fileBar').classList.remove('show');
+    document.getElementById('inputPDF').value = '';
+    if(blobURL){ URL.revokeObjectURL(blobURL); blobURL = null }
+}
+
+function cerrarVisorSubir(){
+    document.getElementById('visorSubir').style.display = 'none';
+    document.getElementById('pdfSubirFrame').src = '';
 }
 </script>
 </body>
 </html>
-<script>
-
-const inputPDF = document.getElementById("inputPDF");
-const visorPDF = document.getElementById("visorPDF");
-
-inputPDF.addEventListener("change", function() {
-
-    const archivo = this.files[0];
-
-    if (archivo) {
-
-        const url = URL.createObjectURL(archivo);
-
-        visorPDF.src = url;
-
-        visorPDF.style.display = "block";
-    }
-
-});
-
-</script>
