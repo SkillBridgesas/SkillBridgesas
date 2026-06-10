@@ -21,7 +21,9 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-
+<button onclick="probarSupabase()">
+    Probar conexión
+</button>
 html{scroll-behavior:smooth}
 
 body{
@@ -659,6 +661,16 @@ function removerArchivo(){
 function cerrarVisorSubir(){
     document.getElementById('visorSubir').style.display = 'none';
     document.getElementById('pdfSubirFrame').src = '';
+}
+    async function probarSupabase() {
+
+    const { data, error } = await supabase
+        .storage
+        .from('contratos')
+        .list();
+
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
 }
 </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
