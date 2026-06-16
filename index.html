@@ -676,10 +676,11 @@ function cerrarVisorSubir(){
 }
 </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
+
+<script>
 
 const supabaseUrl = "https://vtcfibaptjtatjkfrafz.supabase.co";
-const supabaseKey = "sb_publishable_geZA_1ru0uwzPksx5sf4zg_Yh7kxEHz";
+const supabaseKey = "TU_CLAVE";
 
 const supabase = window.supabase.createClient(
     supabaseUrl,
@@ -687,6 +688,17 @@ const supabase = window.supabase.createClient(
 );
 
 console.log("Supabase conectado");
+
+async function probarSupabase() {
+
+    const { data, error } = await supabase
+        .storage
+        .from('contratos')
+        .list();
+
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
+}
 
 </script>
 </body>
