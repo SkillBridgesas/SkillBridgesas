@@ -690,7 +690,9 @@ const supabase = window.supabase.createClient(
 );
 
 console.log("Supabase conectado");
-
+console.log("Cliente:", supabase);
+console.log("Storage:", supabase.storage);
+console.log("Auth:", supabase.auth);
 async function probarSupabase() {
 
     const { data, error } = await supabase
